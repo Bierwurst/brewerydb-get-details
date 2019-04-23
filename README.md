@@ -1,39 +1,26 @@
-# React application with Express server
+# React application to acces the brewerydb API
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). Then an Express server was added in the `server` directory. The server is proxied via the `proxy` key in `package.json`.
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 ## Using this project
 
 Clone the project, change into the directory and install the dependencies.
 
 ```bash
-git clone https://github.com/philnash/react-express-starter.git
-cd react-express-starter
-npm install
+git clone https://github.com/bierwurst/brewerydb-get-details
+cd brewerydb-get-details
+yarn install
 ```
 
-Create a `.env` file for environment variables in your server.
+Create a `.env` file for environment variables in the root of your application.
 
-You can start the server on its own with the command:
+add your brewerydb api key like so:
+
+REACT_APP_BREWERYDB_API_KEY='your key'
+
+
+Run the React application with the command:
 
 ```bash
-npm run server
+yarn start
 ```
-
-Run the React application on its own with the command:
-
-```bash
-npm start
-```
-
-Run both applications together with the command:
-
-```bash
-npm run dev
-```
-
-The React application will run on port 3000 and the server port 3001.
-
-## React Twilio starter
-
-The [twilio branch](https://github.com/philnash/react-express-starter/tree/twilio) is a similar setup but also provides endpoints with basic [Access Tokens](https://www.twilio.com/docs/iam/access-tokens) for [Twilio Programmable Chat](https://www.twilio.com/docs/chat) and [Twilio Programmable Video](https://www.twilio.com/docs/video). You can use the project as a base for building React chat or video applications.

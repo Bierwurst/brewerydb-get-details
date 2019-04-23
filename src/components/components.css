@@ -1,0 +1,21 @@
+ul, li {
+	list-style-type: none;
+}
+
+.container {
+	background-color: #e5dfb9;
+}
+
+.titel {
+	height: 10vh;
+	/* margin-bottom: 3rem; */
+	background-color: #e2ddc0;
+}
+
+.row-backgr {
+	background-color: #ede8ce;
+}
+
+.col-backgr {
+	background-color: #f2eeda;
+}

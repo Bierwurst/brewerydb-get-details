@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import './components.css';
+import {
+  Link
+} from 'react-router-dom';
+const API_KEY = `${process.env.REACT_APP_BREWERYDB_API_KEY}`;
 
-const baseURL = `http://api.brewerydb.com/v2/beer/c4f2KE/?key=76c7cea02e9919a762011e3f44c96e37`;
-// const proxy = `https://cors-anywhere.herokuapp.com/${baseURL}`;
 const axios = require('axios');
 
 
@@ -16,7 +19,7 @@ class Details extends Component {
 
   componentDidMount() {
 		const { id } = this.props.location.state
-  axios.get(`https://cors-anywhere.herokuapp.com/http://api.brewerydb.com/v2/beer/${id}/?key=76c7cea02e9919a762011e3f44c96e37`)
+  axios.get(`https://cors-anywhere.herokuapp.com/http://api.brewerydb.com/v2/beer/${id}/?key=${API_KEY}`)
     .then(res => this.setState({ beer: res.data.data}))
     .catch(function (error) {
       // handle error
@@ -30,28 +33,38 @@ class Details extends Component {
   render() {
 		let pivo = this.state.beer;
     return (
-      <div className="App">
-        {console.log('details', this.state)}
-				<p>hello from details</p>
-				<div className="card" style={{width: "18rem"}}>
-				<img className="card-img-top" src={!pivo.labels ? 'https://cdn3.iconfinder.com/data/icons/tango-icon-library/48/image-x-generic-256.png' : pivo.labels.medium} alt="label"/>
-				<div className="card-body bg-light">
-					<li className="card-text">name: {pivo.name}</li>
-					<li className="card-text">status: {pivo.status}</li>
-					<li className="card-text">isOrganic: {pivo.isOrganic}</li>
-					<li className="card-text">year: {pivo.year}</li>
-					<li className="card-text">status: {pivo.status}</li>
-          <li className="card-text">glass: {!pivo.glass ? <p>no information availavle</p> : <ul>
-                     <li>id: {pivo.glass.id}</li>
-                     <li>name: {pivo.glass.name}</li>
-                     <li>createDate: {pivo.glass.createDate}</li>
-                 </ul>
-                   }
-          </li>
+      <div className="container mt-5">
+        <div className="row">
+          {/* {console.log('details', this.state)} */}
+  				<div className="card col-6 offset-3" style={{width: "18rem"}}>
+            {!pivo.labels
+              ? <div className="container label-placeholder">
+                  <div className="row h-100">
+                    <div className="col text-align-center my-auto">
+                      <p className="text-center">no label found</p>
+                    </div>
 
-				</div>
-			</div>
-      </div>
+                  </div>
+                </div>
+            : <img className="card-img-top" src={pivo.labels.large} alt="label"/>}
+  				<div className="card-body bg-light">
+            <dl className="text-align-center">
+              <dt className="card-title">{pivo.name}</dt>
+    					<dd className="card-text">abv: {pivo.abv}</dd>
+              <dd className="card-text">ibu: {!pivo.ibu ? 'n/a' : pivo.ibu}</dd>
+    					<dd className="card-text">isOrganic: {pivo.isOrganic}</dd>
+    					<dd className="card-text">year: {!pivo.year ? 'n/a' : pivo.year}</dd>
+    					<dd className="card-text">status: {pivo.status}</dd>
+              <dd className="card-text">glass: {!pivo.glass ? 'n/a' : pivo.glass.name}
+              </dd>
+            </dl>
+
+            <Link to="/beerlist" type=""button className="btn btn-secondary align-self-center p-2">Back to list</Link>
+  				</div>
+  			</div>
+        </div>
+        </div>
+
     );
   }
 }
