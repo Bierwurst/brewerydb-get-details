@@ -1,3 +1,13 @@
+.label-placeholder {
+	width: 538px;
+	height: 538px;
+}
+
+.text-placeholder {
+	text-align: center;
+	transform: translateY(263px);
+}
+
 ul, li {
 	list-style-type: none;
 }
