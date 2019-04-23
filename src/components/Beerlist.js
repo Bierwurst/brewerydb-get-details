@@ -5,8 +5,8 @@ import {
 import './components.css';
 // const API_KEY = process.env.BREWERYDB_API_KEY;
 const API_KEY = `${process.env.REACT_APP_BREWERYDB_API_KEY}`;
-const baseURL = `http://api.brewerydb.com/v2/beers/?key=${API_KEY}`;
-const proxy = `https://cors-anywhere.herokuapp.com/${baseURL}`;
+// const baseURL = `http://api.brewerydb.com/v2/beers/?key=${API_KEY}`;
+// const proxy = `https://cors-anywhere.herokuapp.com/${baseURL}`;
 const axios = require('axios');
 
 
@@ -14,18 +14,18 @@ class Beerlist extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      beers: [],
-      id: ''
+      beers: []
     };
 
   }
 
-  handleClick(e){
-     console.log(e.target.id);
-  }
+
+
 
   componentDidMount() {
-  axios.get(proxy)
+    // const { page } = this.props.match.params.page
+    	const { page } = this.props.location.state
+  axios.get(`https://cors-anywhere.herokuapp.com/http://api.brewerydb.com/v2/beers/?key=${API_KEY}&p=${page}`)
     .then(res => this.setState({ beers: res.data.data}))
 
     .catch(function (error) {
@@ -45,7 +45,7 @@ class Beerlist extends Component {
         <div className="container mt-5">
           <div className="d-flex align-items-center justify-content-center titel">
             <div className="d-flex flex-column">
-              <h2 className="d-inline-block mt-auto">To obtain more information click on the name of the beer</h2>
+              <h3 className="d-inline-block mt-auto">To obtain more information click on the name of the beer</h3>
             </div>
           </div>
 

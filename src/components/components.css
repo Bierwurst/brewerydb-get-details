@@ -29,3 +29,12 @@ ul, li {
 .col-backgr {
 	background-color: #f2eeda;
 }
+
+.page-index {
+	min-width: 76px;
+	margin: 2px;
+}
+
+.page-index-container {
+	max-width: 570px;
+}

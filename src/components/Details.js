@@ -34,6 +34,7 @@ class Details extends Component {
 		let pivo = this.state.beer;
     return (
       <div className="container mt-5">
+        {console.log(this.props)}
         <div className="row">
           {/* {console.log('details', this.state)} */}
   				<div className="card col-6 offset-3" style={{width: "18rem"}}>
@@ -58,8 +59,11 @@ class Details extends Component {
               <dd className="card-text">glass: {!pivo.glass ? 'n/a' : pivo.glass.name}
               </dd>
             </dl>
+            <div className="d-flex justify-content-between">
+              <button className="btn btn-secondary align-self-center p-2" onClick={() => this.props.history.goBack()}>BACK TO LIST</button>
+              <Link to="/" type=""button className="btn btn-secondary align-self-center p-2">BACK TO INDEX</Link>
+            </div>
 
-            <Link to="/beerlist" type=""button className="btn btn-secondary align-self-center p-2">Back to list</Link>
   				</div>
   			</div>
         </div>

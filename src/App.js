@@ -6,18 +6,22 @@ import './App.css';
 import {
   BrowserRouter as Router,
   Route,
-  Switch,
-  Link
+  Switch
 } from 'react-router-dom';
-const API_KEY = `${process.env.REACT_APP_BREWERYDB_API_KEY}`;
+import createHistory from 'history/createBrowserHistory';
+const history = createHistory();
+
+
 
 class App extends React.Component {
   render() {
     return (
-      <Router>
+      <Router history={history}>
         <Switch>
           <Route exact path="/" component={ Home }/>
           <Route exact path="/beerlist" component={ Beerlist }/>
+          {/* <Route path="/:handle" component={ Beerlist }/> */}
+          {/* <Route path="beerlist/:page" component={ Beerlist } /> */}
           <Route exact path="/details" component={ Details }/>
         </Switch>
       </Router>
