@@ -11,6 +11,7 @@ git clone https://github.com/bierwurst/brewerydb-get-details
 cd brewerydb-get-details
 yarn install
 ```
+Get an API key at https://www.brewerydb.com/developers/docs
 
 Create a `.env` file for environment variables in the root of your application.
 

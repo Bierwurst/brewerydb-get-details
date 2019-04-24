@@ -3,10 +3,7 @@ import {
   Link
 } from 'react-router-dom';
 import './components.css';
-// const API_KEY = process.env.BREWERYDB_API_KEY;
 const API_KEY = `${process.env.REACT_APP_BREWERYDB_API_KEY}`;
-// const baseURL = `http://api.brewerydb.com/v2/beers/?key=${API_KEY}`;
-// const proxy = `https://cors-anywhere.herokuapp.com/${baseURL}`;
 const axios = require('axios');
 
 
@@ -16,14 +13,10 @@ class Beerlist extends Component {
     this.state = {
       beers: []
     };
-
   }
 
-
-
-
   componentDidMount() {
-    // const { page } = this.props.match.params.page
+
     	const { page } = this.props.location.state
   axios.get(`https://cors-anywhere.herokuapp.com/http://api.brewerydb.com/v2/beers/?key=${API_KEY}&p=${page}`)
     .then(res => this.setState({ beers: res.data.data}))
@@ -40,7 +33,6 @@ class Beerlist extends Component {
   render() {
     return (
       <div className="App">
-        {console.log(this.state)}
 
         <div className="container mt-5">
           <div className="d-flex align-items-center justify-content-center titel">

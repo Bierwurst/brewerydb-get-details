@@ -14,22 +14,20 @@ class Home extends Component {
 				<div className="d-flex flex-column">
 					<h1 className="text align-self-center p-2">Welcome to the brewerydb api</h1>
 					<h4 className="text align-self-center p-2">Please choose a page</h4>
-					{/* <Link to="/beerlist" type=""button className="btn btn-secondary align-self-center p-2">Get a list of all the beers</Link> */}
-          <div className="d-flex flex-wrap align-items-center justify-content-center h-100 page-index-container">
-            {pages.map(page =>{
-                  return <div key={page}>
-                            <Link to={{
-                                pathname: '/beerlist',
-                                state: {
-                                  page
-                                }
-                              }} type=""button className="btn btn-secondary align-self-center p-2 page-index">
-                              <div>page {page}</div>
-                            </Link>
-                        </div>
-                     })}
-          </div>
-
+            <div className="d-flex flex-wrap align-items-center justify-content-center h-100 page-index-container">
+              {pages.map(page =>{
+                    return <div key={page}>
+                              <Link to={{
+                                  pathname: '/beerlist',
+                                  state: {
+                                    page
+                                  }
+                                }} type=""button className="btn btn-secondary align-self-center p-2 page-index">
+                                <div>page {page}</div>
+                              </Link>
+                          </div>
+                       })}
+            </div>
 				</div>
 			</div>
 		</div>

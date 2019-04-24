@@ -20,8 +20,6 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={ Home }/>
           <Route exact path="/beerlist" component={ Beerlist }/>
-          {/* <Route path="/:handle" component={ Beerlist }/> */}
-          {/* <Route path="beerlist/:page" component={ Beerlist } /> */}
           <Route exact path="/details" component={ Details }/>
         </Switch>
       </Router>

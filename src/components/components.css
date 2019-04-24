@@ -1,8 +1,7 @@
-.label-placeholder {
-	width: 538px;
-	height: 538px;
-}
-
+/* .label-placeholder {
+	max-width: 538px;
+	max-height: 538px;
+} */
 .text-placeholder {
 	text-align: center;
 	transform: translateY(263px);
@@ -12,13 +11,16 @@ ul, li {
 	list-style-type: none;
 }
 
+a {
+	color: #000;
+}
+
 .container {
 	background-color: #e5dfb9;
 }
 
 .titel {
 	height: 10vh;
-	/* margin-bottom: 3rem; */
 	background-color: #e2ddc0;
 }
 
@@ -37,4 +39,16 @@ ul, li {
 
 .page-index-container {
 	max-width: 570px;
+}
+
+@media (max-width: 410px) {
+	h3 {
+		font-size: 1.2rem !important;
+	}
+
+	.btn {
+		font-size: 0.5rem !important;
+		line-height: 0.5rem !important;
+		margin-right: 2px;
+	}
 }
