@@ -14,7 +14,7 @@ class Home extends Component {
 				<div className="d-flex flex-column">
 					<h1 className="text align-self-center p-2">Welcome to the brewerydb api</h1>
 					<h4 className="text align-self-center p-2">Please choose a page</h4>
-            <div className="d-flex flex-wrap align-items-center justify-content-center h-100 page-index-container">
+            {/* <div className="d-flex flex-wrap align-items-center justify-content-center h-100 page-index-container">
               {pages.map(page =>{
                     return <div key={page}>
                               <Link to={{
@@ -27,8 +27,28 @@ class Home extends Component {
                               </Link>
                           </div>
                        })}
+            </div> */}
+            <div class="btn-group">
+              <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Index
+              </button>
+              <div class="dropdown-menu">
+                {pages.map(page =>{
+                      return <div key={page}>
+                        <Link class="dropdown-item" to={{
+                            pathname: '/beerlist',
+                            state: {
+                              page
+                            }
+                          }}>
+                          <div>{page}</div>
+                        </Link>
+                            </div>
+                         })}
+              </div>
             </div>
 				</div>
+
 			</div>
 		</div>
     );

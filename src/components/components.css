@@ -41,6 +41,23 @@ a {
 	max-width: 570px;
 }
 
+.spinner {
+	width: 64px;
+	height: 64px;
+	margin: auto;
+	animation: ROTATE 4s infinite linear;
+}
+
+@-webkit-keyframes ROTATE {
+	from {
+		-webkit-transform: rotate(0deg);
+	}
+
+	to {
+		-webkit-transform: rotate(359deg);
+	}
+}
+
 @media (max-width: 410px) {
 	h3 {
 		font-size: 1.2rem !important;

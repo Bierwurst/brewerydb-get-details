@@ -3,7 +3,8 @@ import './components.css';
 import {
   Link
 } from 'react-router-dom';
-import notfound from '../not-found.png'
+import notfound from '../not-found.png';
+import Spinner from './Spinner';
 
 const API_KEY = `${process.env.REACT_APP_BREWERYDB_API_KEY}`;
 const axios = require('axios');
@@ -12,14 +13,15 @@ class Details extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      beer: {}
+      beer: {},
+      isLoading: true
     };
   }
 
   componentDidMount() {
-		const { id } = this.props.location.state
+		const { id } = this.props.location.state;
   axios.get(`https://cors-anywhere.herokuapp.com/http://api.brewerydb.com/v2/beer/${id}/?key=${API_KEY}`)
-    .then(res => this.setState({ beer: res.data.data}))
+    .then(res => this.setState({ beer: res.data.data, isLoading: false}))
     .catch(function (error) {
       // handle error
       console.log(error);
@@ -31,12 +33,16 @@ class Details extends Component {
 
   render() {
 		let pivo = this.state.beer;
+    const { isLoading } = this.state;
     return (
+
       <div className="container mt-5">
-        <div className="row">
+        {isLoading
+          ?  <Spinner />
+           : <div className="row">
   				<div className="card col-6 offset-3" style={{width: "18rem"}}>
             {!pivo.labels
-              ? <img className="card-img-top" src={notfound} alt="not found"/>
+            ? <img className="card-img-top" src={notfound} alt="not found"/>
             : <img className="card-img-top" src={pivo.labels.large} alt="label"/>}
 
     				<div className="card-body bg-light">
@@ -56,9 +62,10 @@ class Details extends Component {
               </div>
     				</div>
     			</div>
-        </div>
+        </div>}
+
       </div>
-    );
+    )
   }
 }
 
